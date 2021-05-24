@@ -35,15 +35,19 @@ class AwakeTest {
         recycler.check(RecyclerViewItemCountAssertion(3, MatchOperator.GREATER_EQUAL))
         Screenshot.takeScreenshot("BeforeAwake")
 
+        // Send device to sleep
         InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand("dumpsys deviceidle force-idle")
+        Thread.sleep(WAIT_LONG)
 
-        Thread.sleep(WAIT)
+        // awake the device
         InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand("dumpsys deviceidle unforce")
+        Thread.sleep(WAIT)
 
         Screenshot.takeScreenshot("AfterAwake")
     }
 
     companion object {
-        const val WAIT = 6 * 60 * 1000L
+        const val WAIT = 1000L
+        const val WAIT_LONG = 6 * 60 * 1000L
     }
 }
