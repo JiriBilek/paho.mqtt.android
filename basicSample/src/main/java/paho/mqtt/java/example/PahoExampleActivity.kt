@@ -104,10 +104,10 @@ class PahoExampleActivity : AppCompatActivity() {
         })
 
         // THIS DOES NOT WORK!
-        mqttAndroidClient.subscribe(subscriptionTopic, 0) { topic, message ->
+/*        mqttAndroidClient.subscribe(subscriptionTopic, 0) { topic, message ->
             Timber.d("Message arrived $topic : ${String(message.payload)}")
             addToHistory("Message arrived $message")
-        }
+        } */
     }
 
     private fun publishMessage() {
@@ -125,9 +125,9 @@ class PahoExampleActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val serverUri = "tcp://mqtt.eclipseprojects.io:1883"
-        private const val subscriptionTopic = "exampleAndroidTopic"
-        private const val publishTopic = "exampleAndroidPublishTopic"
+        private const val serverUri = "tcp://broker.hivemq.com:1883"
+        private const val subscriptionTopic = "jb/exampleAndroidTopic"
+        private const val publishTopic = "jb/exampleAndroidPublishTopic"
         private const val publishMessage = "Hello World"
         private var clientId = "BasicSample"
     }
